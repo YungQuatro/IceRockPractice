@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/core_navigation"
+    app:startDestination="@id/authorizationFragment">
+
+    <fragment
+        android:id="@+id/authorizationFragment"
+        android:name="com.sviridov.icerockprac.authentication.AuthFragment"
+        android:label="@string/authorization_fragment_caption"
+        tools:layout="@layout/fragment_auth" >
+        <action
+            android:id="@+id/navigateToList"
+            app:destination="@id/repositoriesListFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/core_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/repositoryDetailsFragment"
+        android:name="com.sviridov.icerockprac.DetailInfoFragment"
+        android:label=""
+        tools:layout="@layout/fragment_repo_details" >
+        <argument
+            android:name="repoId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/repositoriesListFragment"
+        android:name="com.sviridov.icerockprac.repo.RepositoriesListFragment"
+        android:label="@string/repositories_fragment_title"
+        tools:layout="@layout/fragment_repositories">
+        <action
+            android:id="@+id/navigateToDetails"
+            app:destination="@id/repositoryDetailsFragment"
+            app:launchSingleTop="true" />
+    </fragment>
+
+    <action
+        android:id="@+id/navigateToAuth"
+        app:destination="@id/authorizationFragment"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/core_navigation"
+        app:popUpToInclusive="true" />
+</navigation>
